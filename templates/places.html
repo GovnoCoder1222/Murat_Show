@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Билеты на {{day}} {{time}}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css')}}">
+</head>
+<body>
+    <h1>
+        {{day}}
+    </h1>
+    <h1>
+        {{time}}
+    </h1>
+    <form action="{{ url_for('pay_page_panel') }}" method="POST">
+  <input type="hidden" name="day" value="{{ day }}">
+  <input type="hidden" name="time" value="{{ time }}">
+
+    <form action="/pay_page" METHOD="post">
+        <div class="checkbox-container ">
+    {% for place, is_free in places %}
+        <label class="checkbox-label " id="selected-values">
+            <input  type="checkbox" class="place_checkbox " name="place" value="{{ place }}" >
+            <span class="checkbox-text ">{{ place }}</span>
+        </label>
+    {% endfor %}
+    <button class="Button" type="submit" formaction="/pay_page">Купить билеты</button>
+</div>
+
+        </form>
+</form>
+
+
+</body>
+</html>
